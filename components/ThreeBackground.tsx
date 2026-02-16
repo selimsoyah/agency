@@ -1,60 +1,55 @@
 "use client";
 
-import { useRef, useMemo } from "react";
+import { useRef } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { Points, PointMaterial } from "@react-three/drei";
+import { TorusKnot, MeshTransmissionMaterial, Float, Environment } from "@react-three/drei";
 import * as THREE from "three";
 
-function Particles(props: any) {
-    const ref = useRef<any>(null!);
+function CentralArtifact() {
+    const ref = useRef<THREE.Mesh>(null!);
 
-    // Generate random points in a sphere
-    const sphere = useMemo(() => {
-        const output = new Float32Array(5000 * 3);
-        for (let i = 0; i < 5000; i++) {
-            const theta = 2 * Math.PI * Math.random();
-            const phi = Math.acos(2 * Math.random() - 1);
-            const r = 1.5 * Math.cbrt(Math.random()); // Radius 1.5
-
-            const x = r * Math.sin(phi) * Math.cos(theta);
-            const y = r * Math.sin(phi) * Math.sin(theta);
-            const z = r * Math.cos(phi);
-
-            output[i * 3] = x;
-            output[i * 3 + 1] = y;
-            output[i * 3 + 2] = z;
-        }
-        return output;
-    }, []);
-
-    useFrame((state, delta) => {
+    useFrame((state) => {
         if (ref.current) {
-            ref.current.rotation.x -= delta / 10;
-            ref.current.rotation.y -= delta / 15;
+            ref.current.rotation.x = state.clock.getElapsedTime() * 0.2;
+            ref.current.rotation.y = state.clock.getElapsedTime() * 0.1;
         }
     });
 
     return (
-        <group rotation={[0, 0, Math.PI / 4]}>
-            <Points ref={ref} positions={sphere} stride={3} frustumCulled={false} {...props}>
-                <PointMaterial
-                    transparent
-                    color="#d4af37"
-                    size={0.002}
-                    sizeAttenuation={true}
-                    depthWrite={false}
+        <Float speed={2} rotationIntensity={1} floatIntensity={1}>
+            <TorusKnot ref={ref} args={[1, 0.3, 128, 32]} scale={1.5}>
+                <MeshTransmissionMaterial
+                    backside
+                    backsideThickness={5}
+                    thickness={2}
+                    roughness={0}
+                    transmission={1}
+                    ior={1.5}
+                    chromaticAberration={1}
+                    anisotropy={1}
+                    distortion={0.5}
+                    distortionScale={1}
+                    temporalDistortion={0.2}
+                    color="#f0f0f0"
+                    background={new THREE.Color("#0b1015")}
                 />
-            </Points>
-        </group>
+            </TorusKnot>
+        </Float>
     );
 }
 
 export default function ThreeBackground() {
     return (
-        <div className="fixed inset-0 z-0 bg-black">
-            <Canvas camera={{ position: [0, 0, 1] }}>
-                <Particles />
+        <div className="fixed inset-0 z-0 bg-[#0b1015]">
+            <Canvas camera={{ position: [0, 0, 5], fov: 45 }}>
+                <ambientLight intensity={0.5} />
+                <spotLight position={[10, 10, 10]} angle={0.15} penumbra={1} intensity={1} color="#d4af37" />
+                <Environment preset="city" />
+                <CentralArtifact />
             </Canvas>
+            {/* Vignette & Grain */}
+            <div className="absolute inset-0 opacity-10 pointer-events-none" style={{ backgroundImage: 'url("https://grainy-gradients.vercel.app/noise.svg")' }}></div>
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,#0b1015_90%)] pointer-events-none" />
         </div>
     );
 }

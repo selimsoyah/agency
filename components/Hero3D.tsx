@@ -37,33 +37,40 @@ export default function Hero3D() {
             </div>
 
             {/* Content Layer */}
-            <div className="relative z-10 text-center px-4 max-w-5xl mx-auto">
+            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
                 <motion.h1
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.2 }}
-                    className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-b from-white to-gray-400"
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, ease: "easeOut" }}
+                    className="text-7xl md:text-9xl font-bold tracking-tighter mb-4 text-white font-serif leading-none mix-blend-difference"
                 >
-                    ELEVATE YOUR <br />
-                    <span className="text-gold">DIGITAL PRESENCE</span>
+                    ARCHITECT
+                </motion.h1>
+                <motion.h1
+                    initial={{ opacity: 0, scale: 0.9 }}
+                    animate={{ opacity: 1, scale: 1 }}
+                    transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
+                    className="text-7xl md:text-9xl font-bold tracking-tighter mb-12 text-white font-serif leading-none italic mix-blend-difference"
+                >
+                    FUTURE
                 </motion.h1>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto mb-10 font-light"
+                    className="text-sm md:text-base text-gray-400 max-w-md mx-auto mb-12 font-sans uppercase tracking-[0.2em]"
                 >
-                    We build bespoke software and AI solutions for the world's most vivid brands.
+                    Agentic Digital Infrastructure<br />for the world's most vivid brands.
                 </motion.p>
 
                 <motion.div
-                    initial={{ opacity: 0, scale: 0.9 }}
-                    animate={{ opacity: 1, scale: 1 }}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.6 }}
                 >
-                    <button className="px-8 py-4 bg-transparent border border-gold text-gold hover:bg-gold hover:text-black transition-all duration-300 text-lg uppercase tracking-widest rounded-sm">
-                        Start Your Project
+                    <button className="text-xs font-bold tracking-[0.2em] border-b border-white pb-1 hover:border-gold hover:text-gold transition-colors duration-300 uppercase">
+                        Initialize Project
                     </button>
                 </motion.div>
             </div>

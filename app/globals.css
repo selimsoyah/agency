@@ -3,34 +3,45 @@
 @theme {
   --font-geist-sans: var(--font-geist-sans);
   --font-geist-mono: var(--font-geist-mono);
+  --font-playfair: var(--font-playfair);
 }
 
 :root {
-  --background: #0a0a0a;
-  --foreground: #ededed;
+  /* Deep Organic Midnight Theme */
+  --background: #0b1015;
+  /* Very deep charcoal/navy */
+  --foreground: #f0f0f0;
+  /* Soft off-white */
+
   --gold: #d4af37;
   --gold-light: #f1d78a;
   --gold-dark: #aa8c2c;
-  --silver: #c0c0c0;
-}
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  --surface: #151b23;
+  /* Slightly lighter for cards */
+  --surface-highlight: #1f2937;
 }
 
 body {
   color: var(--foreground);
-  background: var(--background);
+  background: radial-gradient(circle at 50% 0%, #1a2333 0%, var(--background) 80%);
   font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
   overflow-x: hidden;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair), serif;
 }
 
 /* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -38,7 +49,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: #333;
+  background: var(--surface-highlight);
   border-radius: 4px;
 }
 
@@ -58,6 +69,16 @@ body {
   border-color: var(--gold);
 }
 
-.text-silver {
-  color: var(--silver);
+/* Glassmorphism Utilities */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.glass-card {
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.03) 0%, rgba(255, 255, 255, 0.01) 100%);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
