@@ -1,177 +1,63 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap');
 @import "tailwindcss";
 
-@layer base {
-  * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
+@theme {
+  --font-geist-sans: var(--font-geist-sans);
+  --font-geist-mono: var(--font-geist-mono);
+}
 
-  body {
-    background: #ffffff;
-    color: #1a1a1a;
-    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    overflow-x: hidden;
-    line-height: 1.6;
-  }
+:root {
+  --background: #0a0a0a;
+  --foreground: #ededed;
+  --gold: #d4af37;
+  --gold-light: #f1d78a;
+  --gold-dark: #aa8c2c;
+  --silver: #c0c0c0;
+}
 
-  h1, h2, h3, h4, h5, h6 {
-    font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-    line-height: 1.2;
-    letter-spacing: -0.03em;
-    font-weight: 700;
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
   }
 }
 
-@layer utilities {
-  .gradient-text {
-    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 50%, #0e7490 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    color: transparent;
-  }
+body {
+  color: var(--foreground);
+  background: var(--background);
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+}
 
-  .gradient-bg {
-    background: linear-gradient(135deg, #06b6d4 0%, #0891b2 100%);
-  }
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
 
-  .glass-card {
-    background: rgba(255, 255, 255, 0.85);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(6, 182, 212, 0.2);
-    box-shadow: 0 10px 40px rgba(6, 182, 212, 0.15);
-  }
-  
-  .glass-card-light {
-    background: rgba(255, 255, 255, 0.95);
-    backdrop-filter: blur(20px);
-    border: 1px solid rgba(6, 182, 212, 0.15);
-    box-shadow: 0 10px 40px rgba(6, 182, 212, 0.1);
-  }
-  
-  /* Scroll Animations - DRAMATIC VERSION */
-  .fade-in {
-    opacity: 0;
-    transform: translateY(100px) scale(0.9);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .fade-in.visible {
-    opacity: 1;
-    transform: translateY(0) scale(1);
-  }
-  
-  .slide-in-left {
-    opacity: 0;
-    transform: translateX(-150px) scale(0.85) rotateY(-15deg);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .slide-in-left.visible {
-    opacity: 1;
-    transform: translateX(0) scale(1) rotateY(0deg);
-  }
-  
-  .slide-in-right {
-    opacity: 0;
-    transform: translateX(150px) scale(0.85) rotateY(15deg);
-    transition: opacity 1.2s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 1.2s cubic-bezier(0.16, 1, 0.3, 1);
-  }
-  
-  .slide-in-right.visible {
-    opacity: 1;
-    transform: translateX(0) scale(1) rotateY(0deg);
-  }
-  
-  /* Keyframe Animations */
-  @keyframes float {
-    0%, 100% { 
-      transform: translateY(0px); 
-    }
-    50% { 
-      transform: translateY(-25px); 
-    }
-  }
-  
-  @keyframes float-delayed {
-    0%, 100% { 
-      transform: translateY(0px); 
-    }
-    50% { 
-      transform: translateY(-25px); 
-    }
-  }
-  
-  .animate-float {
-    animation: float 6s ease-in-out infinite;
-  }
-  
-  .animate-float-delayed {
-    animation: float-delayed 6s ease-in-out infinite 2s;
-  }
-  
-  @keyframes slide-horizontal {
-    0% { 
-      transform: translateX(0); 
-    }
-    100% { 
-      transform: translateX(-50%); 
-    }
-  }
-  
-  .animate-slide-horizontal {
-    animation: slide-horizontal 40s linear infinite;
-    will-change: transform;
-  }
-  
-  @keyframes pulse-scale {
-    0%, 100% { 
-      transform: scale(1);
-      box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
-    }
-    50% { 
-      transform: scale(1.05);
-      box-shadow: 0 20px 70px rgba(6, 182, 212, 0.5);
-    }
-  }
-  
-  .pulse-glow {
-    animation: pulse-scale 2s ease-in-out infinite;
-  }
-  
-  @keyframes gradient-shift {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-  
-  .animate-gradient {
-    background-size: 200% 200%;
-    animation: gradient-shift 8s ease infinite;
-  }
-  
-  /* Bounce effect on visible */
-  @keyframes bounce-in {
-    0% {
-      opacity: 0;
-      transform: translateY(100px) scale(0.8);
-    }
-    50% {
-      opacity: 0.8;
-      transform: translateY(-10px) scale(1.05);
-    }
-    100% {
-      opacity: 1;
-      transform: translateY(0) scale(1);
-    }
-  }
-  
-  .bounce-on-scroll {
-    animation: bounce-in 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-  }
+::-webkit-scrollbar-track {
+  background: var(--background);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #333;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--gold);
+}
+
+.text-gold {
+  color: var(--gold);
+}
+
+.bg-gold {
+  background-color: var(--gold);
+}
+
+.border-gold {
+  border-color: var(--gold);
+}
+
+.text-silver {
+  color: var(--silver);
 }
