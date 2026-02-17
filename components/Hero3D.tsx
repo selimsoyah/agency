@@ -24,7 +24,7 @@ function HeroText3D() {
 
 export default function Hero3D() {
     return (
-        <section className="relative h-screen flex items-center justify-center overflow-hidden">
+        <section className="relative h-screen flex items-start justify-start overflow-hidden">
             {/* 3D Scene Layer */}
             <div className="absolute inset-0 z-0 opacity-30">
                 <Canvas camera={{ position: [0, 0, 5] }}>
@@ -36,15 +36,15 @@ export default function Hero3D() {
                 </Canvas>
             </div>
 
-            {/* Content Layer */}
-            <div className="relative z-10 flex flex-col items-center justify-center h-full px-4 text-center">
+            {/* Content Layer - Far Left, Top */}
+            <div className="relative z-10 flex flex-col items-start justify-start h-full pl-8 md:pl-12 lg:pl-16 pr-4 pt-24 md:pt-32 text-left w-full md:w-1/2">
                 <motion.h1
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 1, ease: "easeOut" }}
                     className="text-7xl md:text-9xl font-bold tracking-tighter mb-4 text-white font-serif leading-none mix-blend-difference"
                 >
-                    ARCHITECT
+                    ELEVATE
                 </motion.h1>
                 <motion.h1
                     initial={{ opacity: 0, scale: 0.9 }}
@@ -52,16 +52,16 @@ export default function Hero3D() {
                     transition={{ duration: 1, delay: 0.1, ease: "easeOut" }}
                     className="text-7xl md:text-9xl font-bold tracking-tighter mb-12 text-white font-serif leading-none italic mix-blend-difference"
                 >
-                    FUTURE
+                    FORWARD
                 </motion.h1>
 
                 <motion.p
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-sm md:text-base text-gray-400 max-w-md mx-auto mb-12 font-sans uppercase tracking-[0.2em]"
+                    className="text-sm md:text-base text-gray-400 max-w-md mb-12 font-sans uppercase tracking-[0.2em]"
                 >
-                    Agentic Digital Infrastructure<br />for the world's most vivid brands.
+                    AI-Powered Software<br />That Scales With Your Ambition.
                 </motion.p>
 
                 <motion.div
