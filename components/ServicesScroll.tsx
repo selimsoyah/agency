@@ -3,27 +3,28 @@
 import { motion, useScroll, useTransform } from "framer-motion";
 import { useRef } from "react";
 import Section from "./Section";
+import SectionVisual from "./SectionVisual";
 
 const services = [
     {
         id: "01",
-        title: "Custom Software",
-        description: "Bespoke architectures tailored to your operational needs."
+        title: "Autonomous Agents",
+        description: "Intelligent systems that operate independently to execute complex business logic."
     },
     {
         id: "02",
-        title: "AI Automation",
-        description: "Intelligent workflows that reduce manual labor by 90%."
+        title: "Neural Infrastructure",
+        description: "Machine learning pipelines built for enterprise-scale data processing."
     },
     {
         id: "03",
-        title: "Digital Infrastructure",
-        description: "Scalable cloud solutions built for hyper-growth."
+        title: "Proprietary LLMs",
+        description: "Custom-trained models optimized for specialized domain expertise."
     },
     {
         id: "04",
-        title: "UX/UI Design",
-        description: "Award-winning interfaces that captivate and convert."
+        title: "Predictive Analytics",
+        description: "Anticipatory software that turns data into foresight and strategy."
     }
 ];
 
@@ -51,15 +52,20 @@ export default function ServicesScroll() {
                         </div>
                     </div>
 
-                    {services.map((service) => (
+                    {services.map((service, idx) => (
                         <div
                             key={service.id}
-                            className="group relative h-[60vh] w-[400px] md:w-[500px] flex-shrink-0 overflow-hidden bg-neutral-900 border border-neutral-800 transition-colors hover:bg-neutral-800"
+                            className="group relative h-[65vh] w-[400px] md:w-[500px] flex-shrink-0 overflow-hidden bg-neutral-900 border border-neutral-800 transition-colors hover:border-gold/30"
                         >
-                            <div className="absolute top-6 left-6 text-8xl font-bold text-neutral-800 group-hover:text-gold/20 transition-colors">
+                            <div className="absolute inset-0 z-0">
+                                <SectionVisual type={`service-${idx + 1}` as any} />
+                            </div>
+                            <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-transparent to-black/80 pointer-events-none" />
+
+                            <div className="absolute top-6 left-6 text-8xl font-bold text-neutral-800/30 group-hover:text-gold/20 transition-colors">
                                 {service.id}
                             </div>
-                            <div className="absolute bottom-0 left-0 p-10 w-full">
+                            <div className="absolute bottom-0 left-0 p-10 w-full z-10 pointer-events-none">
                                 <h3 className="text-4xl font-bold text-white mb-4 group-hover:text-gold transition-colors">
                                     {service.title}
                                 </h3>

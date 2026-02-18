@@ -1,0 +1,19 @@
+{
+  "glyphs": {},
+  "familyName": "Roboto",
+  "ascender": 1900,
+  "descender": -500,
+  "unitsPerEm": 1000,
+  "boundingBox": {
+    "xMin": -500,
+    "xMax": 2000,
+    "yMin": -500,
+    "yMax": 1900
+  },
+  "resolution": 1000,
+  "original_font_information": {
+    "postscriptName": "Roboto-Regular",
+    "version": "Version 2.137; 2017",
+    "manufacturer": "Google"
+  }
+}
