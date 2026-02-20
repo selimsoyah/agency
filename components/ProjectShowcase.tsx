@@ -2,6 +2,7 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 import Section from "./Section";
 import SectionVisual from "./SectionVisual";
 
@@ -68,9 +69,12 @@ export default function ProjectShowcase() {
                             ))}
                         </ul>
 
-                        <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gold transition-colors duration-300 rounded-full">
+                        <Link
+                            href="/view-case-study"
+                            className="inline-block px-8 py-3 bg-white text-black font-medium hover:bg-gold transition-colors duration-300 rounded-full"
+                        >
                             VIEW CASE STUDY
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
