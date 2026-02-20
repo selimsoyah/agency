@@ -9,14 +9,19 @@ function HeroText3D() {
     return (
         <Float speed={2} rotationIntensity={0.5} floatIntensity={0.5}>
             <Center>
-                {/* Note: You would normally load a font here. For now we use standard HTML overlay for text to ensure readability and SEO, 
-            and use 3D for abstract elements behind/around it. 
-            If we had a font file (Typeface JSON), we could use Text3D.
-        */}
-                <mesh>
-                    <boxGeometry args={[1, 1, 1]} />
-                    <meshStandardMaterial color="#d4af37" wireframe />
-                </mesh>
+                <Text3D
+                    font="/fonts/Roboto_Regular.json"
+                    size={1}
+                    height={0.2}
+                    curveSegments={12}
+                    bevelEnabled
+                    bevelThickness={0.02}
+                    bevelSize={0.02}
+                    bevelSegments={5}
+                >
+                    AI Voice Assistant
+                    <meshStandardMaterial color="#d4af37" />
+                </Text3D>
             </Center>
         </Float>
     );
@@ -38,6 +43,15 @@ export default function Hero3D() {
 
             {/* Content Layer - Far Left, Top */}
             <div className="relative z-10 flex flex-col items-start justify-start h-full pl-8 md:pl-12 lg:pl-16 pr-4 pt-24 md:pt-32 text-left w-full md:w-1/2">
+                <motion.div
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ duration: 0.8 }}
+                    className="mb-8"
+                >
+                    <span className="text-gold text-xslg font-bold tracking-[0.4em] uppercase">True North Labs</span>
+                </motion.div>
+
                 <motion.h1
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
@@ -59,9 +73,11 @@ export default function Hero3D() {
                     initial={{ opacity: 0, y: 20 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ duration: 0.8, delay: 0.4 }}
-                    className="text-sm md:text-base text-gray-400 max-w-md mb-12 font-sans uppercase tracking-[0.2em]"
+                    className="text-sm md:text-base text-gray-400 max-w-md mb-12 font-sans uppercase tracking-[0.2em] leading-relaxed"
                 >
-                    AI-Powered Software<br />That Scales With Your Ambition.
+                   AI-Powered Software <br />
+                   That Scales With Your Ambition.
+                  
                 </motion.p>
 
                 <motion.div
@@ -70,7 +86,7 @@ export default function Hero3D() {
                     transition={{ duration: 0.8, delay: 0.6 }}
                 >
                     <button className="text-xs font-bold tracking-[0.2em] border-b border-white pb-1 hover:border-gold hover:text-gold transition-colors duration-300 uppercase">
-                        Initialize Project
+                        Discover Our Work
                     </button>
                 </motion.div>
             </div>

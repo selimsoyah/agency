@@ -2,7 +2,9 @@
 
 import { useRef } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
+import Link from "next/link";
 import Section from "./Section";
+import SectionVisual from "./SectionVisual";
 
 export default function ProjectShowcase() {
     const ref = useRef(null);
@@ -31,32 +33,25 @@ export default function ProjectShowcase() {
 
                 <div ref={ref} className="relative grid md:grid-cols-2 gap-12 items-center">
                     <motion.div style={{ y, opacity }} className="relative z-10">
-                        <div className="relative aspect-square md:aspect-[4/5] bg-neutral-900 rounded-lg overflow-hidden border border-neutral-800 group">
-                            {/* Abstract visualization of Voice AI */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-neutral-900 via-neutral-800 to-black opacity-80" />
-                            <div className="absolute inset-0 flex items-center justify-center">
-                                <div className="w-32 h-32 md:w-48 md:h-48 rounded-full border border-gold/30 flex items-center justify-center animate-pulse">
-                                    <div className="w-24 h-24 md:w-36 md:h-36 rounded-full border border-gold/50 flex items-center justify-center">
-                                        <div className="w-16 h-16 md:w-24 md:h-24 bg-gold/10 rounded-full backdrop-blur-md" />
-                                    </div>
-                                </div>
-                            </div>
+                        <div className="relative aspect-square md:aspect-[4/5] bg-neutral-900 rounded-lg overflow-hidden border border-neutral-800 group cursor-pointer hover:border-gold/30 transition-colors">
+                            <SectionVisual type="project" />
+                            <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-60 pointer-events-none" />
 
-                            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent">
-                                <h3 className="text-3xl font-bold text-white mb-2">Neural Voice Engine</h3>
-                                <p className="text-gray-400">Natural Language Processing • Real-time Audio • 24/7 Availability</p>
+                            <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black to-transparent pointer-events-none">
+                                <h3 className="text-3xl font-bold text-white mb-2 uppercase tracking-tighter">Atlas Voice Engine</h3>
+                                <p className="text-gray-400 text-sm uppercase tracking-widest">Natural Language Processing • Real-time Audio</p>
                             </div>
                         </div>
                     </motion.div>
 
                     <div className="relative z-10">
                         <h3 className="text-4xl md:text-6xl font-bold mb-6 font-serif">
-                            Autonomous <br />
-                            <span className="text-gold italic">Communication Protocol.</span>
+                            The Compass of <br />
+                            <span className="text-gold italic">Autonomous Scale.</span>
                         </h3>
                         <p className="text-xl text-gray-300 mb-8 font-light leading-relaxed">
-                            We engineered a proprietary Neural Voice Engine capable of handling complex customer interactions with human-like latency and understanding.
-                            It allows businesses to capture revenue 24/7 without lifting a finger.
+                            We engineered Atlas, a proprietary Neural Voice Engine capable of navigating complex customer intent with surgical precision.
+                            It allows True North Labs partners to capture revenue across time zones, autonomously.
                         </p>
 
                         <ul className="space-y-4 mb-10">
@@ -74,9 +69,12 @@ export default function ProjectShowcase() {
                             ))}
                         </ul>
 
-                        <button className="px-8 py-3 bg-white text-black font-medium hover:bg-gold transition-colors duration-300 rounded-full">
+                        <Link
+                            href="/view-case-study"
+                            className="inline-block px-8 py-3 bg-white text-black font-medium hover:bg-gold transition-colors duration-300 rounded-full"
+                        >
                             VIEW CASE STUDY
-                        </button>
+                        </Link>
                     </div>
                 </div>
             </div>
